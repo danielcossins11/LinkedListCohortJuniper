@@ -56,18 +56,18 @@ namespace SinglyLinkedLists
         // READ: http://msdn.microsoft.com/en-us/library/system.icomparable.compareto.aspx
         public int CompareTo(Object obj)
         {
-            SinglyLinkedListNode newObj = obj as SinglyLinkedListNode;
-            if(this.Next == newObj || newObj.Next == null)
+            SinglyLinkedListNode obj2 = obj as SinglyLinkedListNode;
+            if (obj == null)
             {
                 return 1;
             }
-            else if(newObj.Next == this || this.Next == null)
+            if (obj2 != null)
             {
-                return -1;
+                return this.Value.CompareTo(obj2.Value);
             }
             else
             {
-                return 0;
+                throw new ArgumentException();
             }
         }
 
@@ -96,6 +96,7 @@ namespace SinglyLinkedLists
                 return Equals(obj2.Value, this.Value);
             }
             return false;
+            //return (base.CompareTo(obj1, this) == 0);
         }
     }
 }
