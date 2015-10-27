@@ -46,7 +46,7 @@ namespace UnitTestSinglyLinkedLists
             SinglyLinkedListNode node1 = new SinglyLinkedListNode("foo");
             SinglyLinkedListNode node2 = new SinglyLinkedListNode("bar");
             node1.Next = node2;
-            Assert.IsFalse(node1.IsLast()); 
+            Assert.IsFalse(node1.IsLast());
         }
 
         [TestMethod]

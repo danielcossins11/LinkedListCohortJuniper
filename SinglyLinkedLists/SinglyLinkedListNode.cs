@@ -48,25 +48,54 @@ namespace SinglyLinkedLists
         public SinglyLinkedListNode(string value)
         {
 
+            this.value = value;
             // Used by the visualizer:
             allNodes.Add(this);
-            this.value = value;
         }
 
         // READ: http://msdn.microsoft.com/en-us/library/system.icomparable.compareto.aspx
         public int CompareTo(Object obj)
         {
-            throw new NotImplementedException();
+            SinglyLinkedListNode newObj = obj as SinglyLinkedListNode;
+            if(this.Next == newObj || newObj.Next == null)
+            {
+                return 1;
+            }
+            else if(newObj.Next == this || this.Next == null)
+            {
+                return -1;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         public bool IsLast()
         {
-            throw new NotImplementedException();
+            if(this.Next == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public override string ToString()
         {
             return Value;
+        }
+
+        public override bool Equals(object obj1)
+        {
+            if (obj1 is SinglyLinkedListNode)
+            {
+                SinglyLinkedListNode obj2 = obj1 as SinglyLinkedListNode;
+                return Equals(obj2.Value, this.Value);
+            }
+            return false;
         }
     }
 }
