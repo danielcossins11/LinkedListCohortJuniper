@@ -122,7 +122,21 @@ namespace SinglyLinkedLists
 
         public string[] ToArray()
         {
-            throw new NotImplementedException();
+            List<string> result = new List<string>();
+            if (first.Value == null)
+            {
+                return new string[] { };
+            }
+            else
+            {
+                SinglyLinkedListNode node = first;
+                while (node != null)
+                {
+                    result.Add(node.Value);
+                    node = node.Next;
+                }
+                return result.ToArray();
+            }
         }
 
         public override string ToString()
