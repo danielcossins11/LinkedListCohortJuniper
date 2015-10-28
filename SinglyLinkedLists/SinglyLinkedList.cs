@@ -101,7 +101,13 @@ namespace SinglyLinkedLists
         // HINT 3: If you highlight code and right click, you can use the refactor menu to extract a method for you...
         public string Last()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            SinglyLinkedListNode node = first;
+            while (node.Next != null)
+            {
+                node = node.Next;
+            }
+            return node.Value;
         }
 
         public void Remove(string value)
