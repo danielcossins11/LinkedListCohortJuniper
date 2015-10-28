@@ -8,21 +8,11 @@ namespace SinglyLinkedLists
     public class SinglyLinkedList
     {
         private SinglyLinkedListNode first;
-        private SinglyLinkedListNode last;
 
         // READ: http://msdn.microsoft.com/en-us/library/aa691335(v=vs.71).aspx
         public SinglyLinkedList(params object[] values)
         {
-            if (values.Length == 0)
-            {
-                first = new SinglyLinkedListNode(null);
-                last = new SinglyLinkedListNode(null);
-            }
-            else
-            {
-                first = new SinglyLinkedListNode(values[0] as string);
-                last = new SinglyLinkedListNode(values[values.Length - 1] as string);
-            }
+            first = new SinglyLinkedListNode(null);
         }
 
         // READ: http://msdn.microsoft.com/en-us/library/6x16t2tx.aspx
@@ -44,16 +34,9 @@ namespace SinglyLinkedLists
 
         public void AddLast(string value)
         {
-            if (last.Value == null)
+            if (first.Value == null)
             {
                 first = new SinglyLinkedListNode(value);
-                last = first;
-            }
-            else
-            {
-                SinglyLinkedListNode storage = last;
-                last = new SinglyLinkedListNode(value);
-                storage.Next = last;
             }
         }
 
