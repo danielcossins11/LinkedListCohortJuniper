@@ -124,5 +124,32 @@ namespace SinglyLinkedLists
         {
             throw new NotImplementedException();
         }
+
+        public override string ToString()
+        {
+            if(first.Value == null)
+            {
+                return "{ }";
+            }
+            else
+            {
+                SinglyLinkedListNode node = first;
+                string result = "{ ";
+                while (node != null)
+                {
+                    if (node.Next == null)
+                    {
+                        result += "\"" + node.Value + "\" ";
+                    }
+                    else
+                    {
+                        result += "\"" + node.Value + "\", ";
+                    }
+                    node = node.Next;
+                }
+                result += "}";
+                return result;
+            }
+        }
     }
 }
