@@ -48,7 +48,33 @@ namespace SinglyLinkedLists
 
         public string ElementAt(int index)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            if(first.Value == null)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            SinglyLinkedListNode node = first;
+            //SinglyLinkedListNode storage = first.Next;
+            for (int i = 0; i <= index; i++)
+            {
+                if (i == index)
+                {
+                    return node.Value;
+                }
+                else
+                {
+                    if (node.Next != null)
+                    {
+                        node = node.Next;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            //throw new ArgumentOutOfRangeException();
+            throw new ArgumentException();
         }
 
         public string First()
