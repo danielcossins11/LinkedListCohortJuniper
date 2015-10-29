@@ -49,7 +49,18 @@ namespace SinglyLinkedLists
         // NOTE: There is more than one way to accomplish this.  One is O(n).  The other is O(1).
         public int Count()
         {
-            throw new NotImplementedException();
+            SinglyLinkedListNode node = first;
+            int count = 0;
+            if(node.Value == null)
+            {
+                return count;
+            }
+            while (node != null)
+            {
+                count++;
+                node = node.Next;
+            }
+            return count++;
         }
 
         public string ElementAt(int index)
@@ -122,21 +133,96 @@ namespace SinglyLinkedLists
 
         public string[] ToArray()
         {
-            List<string> result = new List<string>();
-            if (first.Value == null)
+            SinglyLinkedListNode node = first;
+            string[] str = new string[this.Count()];
+            for(int i=0; i<str.Length; i++)
             {
-                return new string[] { };
+                str[i] = node.Value;
+                node = node.Next;
             }
-            else
-            {
-                SinglyLinkedListNode node = first;
-                while (node != null)
-                {
-                    result.Add(node.Value);
-                    node = node.Next;
-                }
-                return result.ToArray();
-            }
+            return str;
+
+
+
+
+
+
+
+
+
+
+
+
+            //string result = "";
+            //SinglyLinkedListNode node = first;
+            //if (first.Value == null)
+            //{
+            //    return new string[] { };
+            //}
+            //else
+            //{
+            //    if (node.Next == null)
+            //    {
+            //        return new string[] { node.Value };
+            //    }
+            //    while (!node.IsLast())
+            //    {
+            //        result += node.Value + ",";
+            //        node = node.Next;
+            //    }
+            //    result = result.Remove((result.Length - 1), 1);
+            //    return result.Split(',');
+            //}
+
+
+
+            //string[] str = this.ToString().Split(',');
+            //return str;
+
+
+
+
+            //string str = this.ToString();
+            //string savedStr = "";
+            //bool isSaving = false;
+            //for(int i=0; i<str.Length; i++)
+            //{
+            //    if(str[i] == '/')
+            //    {
+            //        if (isSaving == false)
+            //        {
+            //            isSaving = true;
+            //        }
+            //        else
+            //        {
+            //            if(str[i+2] == ',' || str[i+2] == ' ')
+            //            {
+            //                isSaving = false;
+            //            }
+            //        }
+            //    }
+            //    if(isSaving == true)
+            //    {
+            //        savedStr += str[i+1];
+            //    }
+            //}
+
+            //LIST VERSION-------------------------
+            //List<string> result = new List<string>();
+            //if (first.Value == null)
+            //{
+            //    return new string[] { };
+            //}
+            //else
+            //{
+            //    SinglyLinkedListNode node = first;
+            //    while (node != null)
+            //    {
+            //        result.Add(node.Value);
+            //        node = node.Next;
+            //    }
+            //    return result.ToArray();
+            //}
         }
 
         public override string ToString()
@@ -165,5 +251,6 @@ namespace SinglyLinkedLists
                 return result;
             }
         }
+
     }
 }
