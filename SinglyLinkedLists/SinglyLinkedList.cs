@@ -25,11 +25,33 @@ namespace SinglyLinkedLists
         public void AddAfter(string existingValue, string value)
         {
             throw new NotImplementedException();
+            //if (Count() == 0)
+            //{
+            //    first = new SinglyLinkedListNode(value);
+            //}
+            //else
+            //{
+            //    SinglyLinkedListNode node = new SinglyLinkedListNode(value);
+            //    SinglyLinkedListNode storage = first;
+            //    first = node;
+            //    node.Next = storage;
+            //}
         }
 
         public void AddFirst(string value)
         {
-            throw new NotImplementedException();
+            if(Count() == 0)
+            {
+                first = new SinglyLinkedListNode(value);
+            }
+            else
+            {
+                SinglyLinkedListNode node = new SinglyLinkedListNode(value);
+                SinglyLinkedListNode storage = first;
+                first = node;
+                node.Next = storage;
+            }
+
         }
 
         public void AddLast(string value)
@@ -134,8 +156,7 @@ namespace SinglyLinkedLists
         public string[] ToArray()
         {
             SinglyLinkedListNode node = first;
-            //string[] str = new string[this.Count()];
-            string str = "";
+            string result = "";
             if(node.Value == null)
             {
                 return new string[] { };
@@ -144,12 +165,11 @@ namespace SinglyLinkedLists
             {
                 for (int i = 0; i < this.Count(); i++)
                 {
-                    //str[i] = node.Value;
-                    str += node.Value + ",";
+                    result += node.Value + ",";
                     node = node.Next;
                 }
-                str = str.Remove(str.Length - 1, 1);
-                return str.Split(',');
+                result = result.Remove(result.Length - 1, 1);
+                return result.Split(',');
             }
             
 
