@@ -134,14 +134,24 @@ namespace SinglyLinkedLists
         public string[] ToArray()
         {
             SinglyLinkedListNode node = first;
-            string[] str = new string[this.Count()];
-            for(int i=0; i<str.Length; i++)
+            //string[] str = new string[this.Count()];
+            string str = "";
+            if(node.Value == null)
             {
-                str[i] = node.Value;
-                node = node.Next;
+                return new string[] { };
             }
-            return str;
-
+            else
+            {
+                for (int i = 0; i < this.Count(); i++)
+                {
+                    //str[i] = node.Value;
+                    str += node.Value + ",";
+                    node = node.Next;
+                }
+                str = str.Remove(str.Length - 1, 1);
+                return str.Split(',');
+            }
+            
 
 
 
