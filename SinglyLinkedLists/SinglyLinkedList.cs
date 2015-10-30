@@ -22,6 +22,16 @@ namespace SinglyLinkedLists
             set { throw new NotImplementedException(); }
         }
 
+        private SinglyLinkedListNode getLast()
+        {
+            SinglyLinkedListNode node = first;
+            while (node.Next != null)
+            {
+                node = node.Next;
+            }
+            return node;
+        }
+
         public void AddAfter(string existingValue, string value)
         {
             throw new NotImplementedException();
@@ -135,6 +145,10 @@ namespace SinglyLinkedLists
         public string Last()
         {
             //throw new NotImplementedException();
+            if(first.Value == null)
+            {
+                return null;
+            }
             SinglyLinkedListNode node = first;
             while (node.Next != null)
             {
