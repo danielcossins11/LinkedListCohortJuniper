@@ -127,31 +127,34 @@ namespace SinglyLinkedLists
 
         private SinglyLinkedListNode NodeAt(int index)
         {
-            //throw new NotImplementedException();
             if (this.First() == null)
             {
                 throw new ArgumentOutOfRangeException();
             }
-            SinglyLinkedListNode node = first;
-            for (int i = 0; i <= index; i++)
+            else if(index>=0)
             {
-                if (i == index)
+                SinglyLinkedListNode node = first;
+                for (int i = 0; i <= index; i++)
                 {
-                    //return node.Value;
-                    break;
-                }
-                else
-                {
-                    if (node.Next == null)
+                    if (i == index)
                     {
-                        throw new ArgumentOutOfRangeException();
+                        break;
                     }
-                    node = node.Next;
+                    else
+                    {
+                        if (node.Next == null)
+                        {
+                            throw new ArgumentOutOfRangeException();
+                        }
+                        node = node.Next;
+                    }
                 }
+                return node;
             }
-            //throw new ArgumentOutOfRangeException();
-            //throw new ArgumentException();
-            return node;
+            else
+            {
+                return this.NodeAt(Count() + index); //Positive index/offset
+            }
         }
 
         public string First()
@@ -212,17 +215,11 @@ namespace SinglyLinkedLists
         // HINT 3: If you highlight code and right click, you can use the refactor menu to extract a method for you...
         public string Last()
         {
-            //throw new NotImplementedException();
-            if(first.Value == null)
+            if (first.Value == null)
             {
                 return null;
             }
-            SinglyLinkedListNode node = first;
-            while (node.Next != null)
-            {
-                node = node.Next;
-            }
-            return node.Value;
+            return ElementAt(-1);
         }
 
         public void Remove(string value)
