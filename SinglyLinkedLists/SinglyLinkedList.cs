@@ -222,6 +222,15 @@ namespace SinglyLinkedLists
             return ElementAt(-1);
         }
 
+        public SinglyLinkedListNode LastNode()
+        {
+            if(first.Value == null)
+            {
+                return null;
+            }
+            return NodeAt(-1);
+        }
+
         public void Remove(string value)
         {
             SinglyLinkedListNode node = first;
@@ -266,88 +275,6 @@ namespace SinglyLinkedLists
                 result = result.Remove(result.Length - 1, 1);
                 return result.Split(',');
             }
-            
-
-
-
-
-
-
-
-
-
-
-
-            //string result = "";
-            //SinglyLinkedListNode node = first;
-            //if (first.Value == null)
-            //{
-            //    return new string[] { };
-            //}
-            //else
-            //{
-            //    if (node.Next == null)
-            //    {
-            //        return new string[] { node.Value };
-            //    }
-            //    while (!node.IsLast())
-            //    {
-            //        result += node.Value + ",";
-            //        node = node.Next;
-            //    }
-            //    result = result.Remove((result.Length - 1), 1);
-            //    return result.Split(',');
-            //}
-
-
-
-            //string[] str = this.ToString().Split(',');
-            //return str;
-
-
-
-
-            //string str = this.ToString();
-            //string savedStr = "";
-            //bool isSaving = false;
-            //for(int i=0; i<str.Length; i++)
-            //{
-            //    if(str[i] == '/')
-            //    {
-            //        if (isSaving == false)
-            //        {
-            //            isSaving = true;
-            //        }
-            //        else
-            //        {
-            //            if(str[i+2] == ',' || str[i+2] == ' ')
-            //            {
-            //                isSaving = false;
-            //            }
-            //        }
-            //    }
-            //    if(isSaving == true)
-            //    {
-            //        savedStr += str[i+1];
-            //    }
-            //}
-
-            //LIST VERSION-------------------------
-            //List<string> result = new List<string>();
-            //if (first.Value == null)
-            //{
-            //    return new string[] { };
-            //}
-            //else
-            //{
-            //    SinglyLinkedListNode node = first;
-            //    while (node != null)
-            //    {
-            //        result.Add(node.Value);
-            //        node = node.Next;
-            //    }
-            //    return result.ToArray();
-            //}
         }
 
         public override string ToString()
