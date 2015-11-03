@@ -108,6 +108,10 @@ namespace SinglyLinkedLists
         {
             SinglyLinkedListNode node = first;
             int count = 0;
+            if(node == null)
+            {
+                return count;
+            }
             if(node.Value == null)
             {
                 return count;
@@ -142,7 +146,7 @@ namespace SinglyLinkedLists
                     }
                     else
                     {
-                        if (node.Next == null)
+                        if (node == null)
                         {
                             throw new ArgumentOutOfRangeException();
                         }
@@ -191,6 +195,7 @@ namespace SinglyLinkedLists
 
         public bool IsSorted()
         {
+            //throw new NotImplementedException();
             SinglyLinkedListNode node = first;
             if(node.Value == null || node.IsLast())
             {
@@ -233,23 +238,38 @@ namespace SinglyLinkedLists
 
         public void Remove(string value)
         {
-            SinglyLinkedListNode node = first;
-            SinglyLinkedListNode storage = node;
-            if(node.Value == value)
+            int index = IndexOf(value);
+            if(index != -1)
             {
-                first = node.Next;
-                return;
-            }
-            while(node != null)
-            {
-                if(node.Value == value)
+                if (index == 0)
                 {
-                    storage.Next = node.Next;
-                    break;
+                    first = NodeAt(index + 1);
                 }
-                storage = node;
-                node = node.Next;
+                else
+                {
+                    SinglyLinkedListNode prevNode = NodeAt(index - 1);
+                    SinglyLinkedListNode nextNode = NodeAt(index + 1);
+                    prevNode.Next = nextNode;
+                }
             }
+            
+            //SinglyLinkedListNode node = first;
+            //SinglyLinkedListNode storage = node;
+            //if(node.Value == value)
+            //{
+            //    first = node.Next;
+            //    return;
+            //}
+            //while(node != null)
+            //{
+            //    if(node.Value == value)
+            //    {
+            //        storage.Next = node.Next;
+            //        break;
+            //    }
+            //    storage = node;
+            //    node = node.Next;
+            //}
         }
 
         public void Sort()
