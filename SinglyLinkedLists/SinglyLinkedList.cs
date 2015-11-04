@@ -282,7 +282,44 @@ namespace SinglyLinkedLists
 
         public void Sort()
         {
-            throw new NotImplementedException();
+            if (IsSorted())
+            {
+                return;
+            }
+            SinglyLinkedListNode previous = null;
+            SinglyLinkedListNode current = first;
+            SinglyLinkedListNode next = first.Next;
+            bool swapped = false;
+            while (next != null)
+            {
+                if (current > next)
+                {
+                    SwapWithNext(previous, current);
+                    swapped = true;
+                }
+                previous = current;
+                current = next;
+                next = current.Next;
+            }
+            if (swapped)
+            {
+                Sort();
+            }
+        }
+
+        private void SwapWithNext(SinglyLinkedListNode previous, SinglyLinkedListNode swapee)
+        {
+            SinglyLinkedListNode swapWith = swapee.Next;
+            if(previous == null)
+            {
+                first = swapWith;
+            }
+            else
+            {
+                previous.Next = swapWith;
+            }
+            swapee.Next = swapWith.Next;
+            swapWith.Next = swapee;
         }
 
         public string[] ToArray()
