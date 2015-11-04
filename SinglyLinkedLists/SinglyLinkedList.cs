@@ -197,19 +197,27 @@ namespace SinglyLinkedLists
         {
             //throw new NotImplementedException();
             SinglyLinkedListNode node = first;
-            if(node.Value == null || node.IsLast())
+            if(node == null || node.Value == null || node.IsLast())
             {
                 return true;
             }
             else
             {
-                while(node != null)
+                SinglyLinkedListNode left = node;
+                SinglyLinkedListNode right = node.Next;
+                while(right != null)
                 {
-                    if(node.CompareTo(node.Next) > 0)
+                    //if(node.CompareTo(node.Next) >= 0)
+                    //{
+                    //    return false;
+                    //}
+                    //node = node.Next;
+                    if(left > right)
                     {
                         return false;
                     }
-                    node = node.Next;
+                    left = right;
+                    right = left.Next;
                 }
                 return true;
             }
